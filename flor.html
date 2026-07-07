@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Atelier Imperial — Eventos & Catering en Puno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@500;600;700;800&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#FAF4E8;
+    --ivory-2:#F3E9D6;
+    --wine:#3E1220;
+    --wine-deep:#2B0C16;
+    --gold:#C9A24B;
+    --gold-soft:#E4C77F;
+    --sage:#6E7A5C;
+    --ink:#2B1620;
+    --line: rgba(62,18,32,0.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Playfair Display', serif;
+    color:var(--wine-deep);
+    font-weight:700;
+    letter-spacing:0.2px;
+  }
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:inline-block;
+    margin-bottom:14px;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{display:block; width:100%; height:100%; object-fit:cover;}
+  .container{max-width:1180px; margin:0 auto; padding:0 32px;}
+  .section{padding:110px 0;}
+  .section-head{max-width:640px; margin:0 auto 60px; text-align:center;}
+  .section-head h2{font-size:clamp(2rem,4vw,2.8rem); line-height:1.15;}
+  .section-head p{font-family:'Cormorant Garamond',serif; font-size:1.25rem; color:#5c4652; margin-top:14px;}
+  .rule{
+    width:64px; height:1px; background:var(--gold); margin:20px auto 0;
+    position:relative;
+  }
+  .rule::after{
+    content:'❖'; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    background:var(--ivory); color:var(--gold); font-size:11px; padding:0 8px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 34px;
+    font-family:'Jost',sans-serif; font-size:0.85rem; letter-spacing:1.5px; text-transform:uppercase;
+    border:1px solid var(--gold);
+    background:transparent; color:var(--wine-deep);
+    cursor:pointer; transition:all .35s ease;
+  }
+  .btn.solid{ background:var(--wine-deep); color:var(--ivory); border-color:var(--wine-deep);}
+  .btn:hover{ background:var(--wine-deep); color:var(--ivory); border-color:var(--wine-deep); letter-spacing:2px;}
+  .btn.solid:hover{ background:var(--gold); border-color:var(--gold); color:var(--wine-deep);}
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(250,244,232,0.0);
+    transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+    padding:26px 0;
+  }
+  header.scrolled{ background:rgba(250,244,232,0.96); box-shadow:0 6px 24px rgba(43,12,22,0.08); padding:14px 0; backdrop-filter:blur(6px);}
+  nav{display:flex; align-items:center; justify-content:space-between; max-width:1180px; margin:0 auto; padding:0 32px;}
+  .logo{font-family:'Playfair Display',serif; font-weight:700; font-size:1.4rem; color:var(--wine-deep); letter-spacing:0.5px;}
+  .logo span{color:var(--gold); font-style:italic; font-family:'Cormorant Garamond',serif; font-weight:500;}
+  .nav-links{display:flex; gap:34px; font-size:0.82rem; letter-spacing:1.3px; text-transform:uppercase;}
+  .nav-links a{position:relative; padding-bottom:4px;}
+  .nav-links a::after{content:'';position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold); transition:width .3s;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:none;}
+  @media(min-width:900px){.nav-cta{display:inline-flex;}}
+  .burger{display:block; font-size:1.6rem; cursor:pointer; color:var(--wine-deep);}
+  @media(min-width:900px){.burger{display:none;} .nav-links{display:flex;}}
+  @media(max-width:899px){.nav-links{display:none;}}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    background:
+      linear-gradient(180deg, rgba(43,12,22,0.55), rgba(43,12,22,0.72)),
+      url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+  }
+  .hero-inner{ max-width:780px; margin:0 auto; text-align:center; color:var(--ivory); padding:0 24px;}
+  .hero .eyebrow{color:var(--gold-soft);}
+  .hero h1{
+    color:var(--ivory); font-size:clamp(2.6rem,6vw,4.6rem); line-height:1.08;
+    font-weight:700;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); font-family:'Cormorant Garamond',serif; font-weight:500;}
+  .hero p{
+    font-family:'Cormorant Garamond',serif; font-size:1.4rem; margin:26px auto 40px; max-width:560px; color:#F1E4CF;
+  }
+  .hero-actions{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .hero-tag{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    font-family:'Cormorant Garamond',serif; font-style:italic; color:#e9d8bb; font-size:0.95rem;
+    letter-spacing:1px;
+  }
+
+  /* ===== ABOUT / STRIP ===== */
+  .strip{ background:var(--wine-deep); color:var(--ivory); padding:26px 0;}
+  .strip .container{display:flex; flex-wrap:wrap; justify-content:space-around; gap:18px; text-align:center;}
+  .strip .item{font-family:'Cormorant Garamond',serif; font-size:1.15rem; letter-spacing:0.5px;}
+  .strip .item b{color:var(--gold-soft); font-family:'Playfair Display',serif; display:block; font-size:1.7rem;}
+
+  .about-grid{ display:grid; grid-template-columns:1fr; gap:50px; align-items:center;}
+  @media(min-width:860px){.about-grid{grid-template-columns:0.9fr 1.1fr;}}
+  .about-img{ position:relative; aspect-ratio:4/5; overflow:hidden; border:1px solid var(--line);}
+  .about-img img{filter:saturate(1.02);}
+  .about-text h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:20px;}
+  .about-text p{margin-bottom:16px; color:#4a3540;}
+  .about-list{ margin-top:26px; display:grid; gap:14px;}
+  .about-list div{display:flex; gap:14px; align-items:flex-start; font-family:'Cormorant Garamond',serif; font-size:1.15rem;}
+  .about-list .mark{ color:var(--gold); font-size:1.2rem; margin-top:2px;}
+
+  /* ===== SERVICES ===== */
+  .services{ background:var(--ivory-2);}
+  .services-grid{display:grid; grid-template-columns:1fr; gap:2px; background:var(--line);}
+  @media(min-width:700px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(min-width:1050px){.services-grid{grid-template-columns:repeat(4,1fr);}}
+  .service-card{ background:var(--ivory-2); position:relative; overflow:hidden; min-height:380px; display:flex; align-items:flex-end;}
+  .service-card .bg{position:absolute; inset:0;}
+  .service-card .bg img{transition:transform .7s ease;}
+  .service-card:hover .bg img{transform:scale(1.08);}
+  .service-card .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(43,12,22,0) 30%, rgba(43,12,22,0.88) 100%);}
+  .service-card .content{position:relative; padding:28px 24px; color:var(--ivory);}
+  .service-card .num{font-family:'Cormorant Garamond',serif; color:var(--gold-soft); font-style:italic; font-size:0.95rem;}
+  .service-card h3{color:var(--ivory); font-size:1.35rem; margin:6px 0 8px;}
+  .service-card p{font-size:0.92rem; color:#e9dcd0; font-family:'Jost',sans-serif; font-weight:300;}
+
+  /* ===== EVENT TYPE TABS ===== */
+  .tabs-bar{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:56px;}
+  .tab-btn{
+    padding:12px 26px; border:1px solid var(--line); background:transparent;
+    font-family:'Jost',sans-serif; font-size:0.82rem; letter-spacing:1.2px; text-transform:uppercase;
+    color:#5c4652; cursor:pointer; transition:.3s;
+  }
+  .tab-btn.active, .tab-btn:hover{ background:var(--wine-deep); border-color:var(--wine-deep); color:var(--ivory);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fadeIn .5s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+  .event-layout{display:grid; grid-template-columns:1fr; gap:40px;}
+  @media(min-width:900px){.event-layout{grid-template-columns:1.1fr 0.9fr;}}
+  .event-gallery{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .event-gallery .tall{grid-row:span 2; aspect-ratio:3/4; overflow:hidden;}
+  .event-gallery .wide{aspect-ratio:4/3; overflow:hidden;}
+  .event-info h3{font-size:1.8rem; margin-bottom:6px;}
+  .event-info .eyebrow{margin-bottom:6px;}
+  .event-info p{color:#4a3540; margin-bottom:20px;}
+  .event-includes{list-style:none; display:grid; gap:12px; margin-bottom:26px;}
+  .event-includes li{ padding-left:24px; position:relative; font-family:'Cormorant Garamond',serif; font-size:1.15rem;}
+  .event-includes li::before{content:'—'; position:absolute; left:0; color:var(--gold);}
+  .event-price{
+    border:1px solid var(--gold); padding:20px 24px; display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;
+  }
+  .event-price .label{font-family:'Cormorant Garamond',serif; font-style:italic; color:#5c4652;}
+  .event-price .amount{font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--wine-deep);}
+
+  /* ===== PACKAGES ===== */
+  .packages{background:var(--wine-deep); color:var(--ivory);}
+  .packages .section-head h2{color:var(--ivory);}
+  .packages .section-head p{color:#d9c3ce;}
+  .pkg-grid{display:grid; grid-template-columns:1fr; gap:28px;}
+  @media(min-width:820px){.pkg-grid{grid-template-columns:repeat(3,1fr);}}
+  .pkg-card{
+    background:rgba(250,244,232,0.04); border:1px solid rgba(228,199,127,0.25);
+    padding:44px 34px; text-align:center; position:relative;
+  }
+  .pkg-card.featured{ border-color:var(--gold); background:rgba(228,199,127,0.08); transform:translateY(-10px);}
+  .pkg-card .tag{position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--wine-deep); font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; padding:6px 16px;}
+  .pkg-card h3{color:var(--gold-soft); font-size:1.4rem; margin-bottom:10px;}
+  .pkg-card .price{font-family:'Playfair Display',serif; font-size:2.4rem; color:var(--ivory); margin-bottom:6px;}
+  .pkg-card .price small{font-size:0.95rem; font-family:'Jost',sans-serif; color:#c9b6c0;}
+  .pkg-card ul{list-style:none; margin:26px 0; display:grid; gap:12px; text-align:left;}
+  .pkg-card ul li{ font-family:'Cormorant Garamond',serif; font-size:1.08rem; padding-left:22px; position:relative; color:#eee2e6;}
+  .pkg-card ul li::before{content:'✦'; position:absolute; left:0; color:var(--gold); font-size:0.75rem; top:5px;}
+  .pkg-card .btn{width:100%; justify-content:center; border-color:var(--gold-soft); color:var(--gold-soft);}
+  .pkg-card .btn:hover{background:var(--gold-soft); color:var(--wine-deep);}
+
+  /* ===== PROVEEDORES / ALIADOS ===== */
+  .allies{background:var(--ivory);}
+  .allies-note{max-width:720px; margin:-30px auto 50px; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; color:#7a6470; font-size:1.05rem; padding:0 24px;}
+  .allies-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+  @media(min-width:700px){.allies-grid{grid-template-columns:repeat(3,1fr);}}
+  .ally-card{border:1px solid var(--line); background:#fff;}
+  .ally-img{aspect-ratio:16/10; overflow:hidden;}
+  .ally-body{padding:22px 24px;}
+  .ally-body .cat{font-family:'Jost',sans-serif; font-size:0.72rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);}
+  .ally-body h4{margin:8px 0 6px; font-size:1.15rem;}
+  .ally-body p{font-family:'Cormorant Garamond',serif; color:#5c4652; font-size:1.05rem;}
+
+  /* ===== GALLERY ===== */
+  .gallery{background:var(--ivory-2);}
+  .masonry{ column-count:1; column-gap:14px;}
+  @media(min-width:700px){.masonry{column-count:2;}}
+  @media(min-width:1000px){.masonry{column-count:3;}}
+  .masonry figure{ break-inside:avoid; margin-bottom:14px; overflow:hidden; position:relative;}
+  .masonry figure img{ transition:transform .6s ease;}
+  .masonry figure:hover img{transform:scale(1.06);}
+  .masonry figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:16px 18px;
+    background:linear-gradient(0deg, rgba(43,12,22,0.85), transparent);
+    color:var(--ivory); font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem;
+    opacity:0; transition:opacity .4s;
+  }
+  .masonry figure:hover figcaption{opacity:1;}
+
+  /* ===== TESTIMONIOS ===== */
+  .testi{background:var(--wine-deep); color:var(--ivory); text-align:center;}
+  .testi blockquote{
+    max-width:760px; margin:0 auto; font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:clamp(1.3rem,2.4vw,1.8rem); line-height:1.5; color:#f1e4cf;
+  }
+  .testi cite{display:block; margin-top:22px; font-style:normal; font-family:'Jost',sans-serif; font-size:0.82rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold-soft);}
+
+  /* ===== CONTACT ===== */
+  .contact{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(43,12,22,0.9), rgba(43,12,22,0.94)),
+      url('https://images.unsplash.com/photo-1478146059778-26028b07395a?q=80&w=1600&auto=format&fit=crop') center/cover fixed;
+    color:var(--ivory);
+  }
+  .contact .section-head h2{color:var(--ivory);}
+  .contact .section-head p{color:#e3cdd8;}
+  .contact-grid{display:grid; grid-template-columns:1fr; gap:40px;}
+  @media(min-width:900px){.contact-grid{grid-template-columns:0.9fr 1.1fr;}}
+  .contact-info{background:rgba(250,244,232,0.06); border:1px solid rgba(228,199,127,0.3); padding:44px 38px;}
+  .contact-info h3{color:var(--gold-soft); font-size:1.5rem; margin-bottom:22px;}
+  .contact-info .row{margin-bottom:18px; font-family:'Cormorant Garamond',serif; font-size:1.15rem;}
+  .contact-info .row b{display:block; font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; color:#c9b6c0; margin-bottom:4px;}
+  .wa-buttons{display:flex; flex-direction:column; gap:12px; margin-top:26px;}
+  .wa-btn{
+    display:flex; align-items:center; gap:12px; padding:15px 20px;
+    background:#25D366; color:#0b3d20; border-radius:2px; font-weight:500; font-family:'Jost',sans-serif;
+    font-size:0.92rem; transition:.3s;
+  }
+  .wa-btn:hover{ filter:brightness(1.08); transform:translateY(-2px);}
+  .wa-btn svg{width:22px; height:22px; flex-shrink:0;}
+
+  .form-card{background:var(--ivory); color:var(--ink); padding:40px; border:1px solid rgba(228,199,127,0.3);}
+  .form-card .field{margin-bottom:18px;}
+  .form-card label{display:block; font-size:0.72rem; letter-spacing:1.3px; text-transform:uppercase; color:#8a6b78; margin-bottom:7px;}
+  .form-card input, .form-card select, .form-card textarea{
+    width:100%; padding:13px 14px; border:1px solid var(--line); background:#fff;
+    font-family:'Jost',sans-serif; font-size:0.95rem; color:var(--ink);
+  }
+  .form-card input:focus, .form-card select:focus, .form-card textarea:focus{ outline:2px solid var(--gold); outline-offset:1px;}
+  .form-card .btn.solid{width:100%; justify-content:center; margin-top:6px;}
+
+  footer{background:var(--wine-deep); color:#c9b6c0; padding:40px 0; text-align:center; font-size:0.85rem;}
+  footer .logo{color:var(--ivory); justify-content:center; display:flex; margin-bottom:10px;}
+  footer a{color:var(--gold-soft);}
+
+  /* Floating WhatsApp */
+  .fab{position:fixed; bottom:26px; right:26px; z-index:200;}
+  .fab-btn{
+    width:60px; height:60px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3); cursor:pointer; border:none;
+  }
+  .fab-btn svg{width:30px; height:30px;}
+  .fab-menu{
+    position:absolute; bottom:74px; right:0; background:#fff; border-radius:8px; box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    width:240px; overflow:hidden; display:none; flex-direction:column;
+  }
+  .fab-menu.open{display:flex;}
+  .fab-menu a{padding:14px 18px; font-size:0.9rem; color:var(--ink); border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:center;}
+  .fab-menu a:last-child{border-bottom:none;}
+  .fab-menu .head{background:var(--wine-deep); color:var(--ivory); padding:14px 18px; font-family:'Playfair Display',serif;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media(prefers-reduced-motion: reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav>
+    <div class="logo">L'ATELIER <span>Imperial</span></div>
+    <div class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#paquetes">Paquetes</a>
+      <a href="#aliados">Aliados</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="btn solid nav-cta">Cotizar ahora</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Puno · Juliaca · Región Altiplano</span>
+    <h1>Eventos con <em>alma imperial</em><br>para el Altiplano</h1>
+    <p>Locales, banquetes, flores, sonido y ambientación reunidos en una sola propuesta, pensada para matrimonios, quinceañeros y eventos corporativos en Puno.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn solid">Solicitar cotización</a>
+      <a href="#eventos" class="btn">Ver tipos de evento</a>
+    </div>
+  </div>
+  <div class="hero-tag">✦ Diseñamos tu celebración de principio a fin ✦</div>
+</section>
+
+<div class="strip">
+  <div class="container">
+    <div class="item"><b>+180</b>Eventos realizados</div>
+    <div class="item"><b>4</b>Servicios integrados</div>
+    <div class="item"><b>2</b>Provincias atendidas</div>
+    <div class="item"><b>7 / 7</b>Días de atención</div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section class="section" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1000&auto=format&fit=crop" alt="Salón decorado para evento">
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">Sobre nosotros</span>
+      <h2>Cada detalle, coordinado como uno solo</h2>
+      <p><b>L'Atelier Imperial</b> nace en Puno para resolver el mayor problema de organizar un evento: coordinar por separado el local, la comida, la decoración, las flores y el sonido. Reunimos los cuatro pilares de tu celebración bajo una sola coordinación.</p>
+      <p>Trabajamos de la mano con locales, floristerías y equipos técnicos de Juliaca y Puno para que tu matrimonio, quinceañero, aniversario o evento corporativo se sienta cuidado en cada detalle.</p>
+      <div class="about-list">
+        <div><span class="mark">✦</span> Un solo punto de contacto para todo tu evento</div>
+        <div><span class="mark">✦</span> Proveedores locales verificados en Puno y Juliaca</div>
+        <div><span class="mark">✦</span> Paquetes según número de invitados y tipo de evento</div>
+        <div><span class="mark">✦</span> Cotización personalizada por WhatsApp en menos de 24h</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="section services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lo que ofrecemos</span>
+      <h2>Cuatro pilares, una sola celebración</h2>
+      <div class="rule"></div>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="bg"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=900&auto=format&fit=crop" alt="Local para eventos con carpa"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <span class="num">01</span>
+        <h3>Local</h3>
+        <p>Salones cerrados y locales campestres con carpa, ideales para pueblos y celebraciones al aire libre en el Altiplano.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="bg"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=900&auto=format&fit=crop" alt="Buffet de comida y bebidas"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <span class="num">02</span>
+        <h3>Comida y bebidas</h3>
+        <p>Buffet, platos servidos, bocaditos, bebidas y mesa dulce, con opciones de sazón puneña y de autor.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="bg"><img src="https://images.unsplash.com/photo-1478146059778-26028b07395a?q=80&w=900&auto=format&fit=crop" alt="Decoración temática de local"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <span class="num">03</span>
+        <h3>Decoración y diseño temático</h3>
+        <p>Ambientación completa del local: telas, luces cálidas, mobiliario y escenografía según el concepto de tu evento.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="bg"><img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?q=80&w=900&auto=format&fit=crop" alt="Arreglos florales para eventos"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <span class="num">04</span>
+        <h3>Arreglos florales</h3>
+        <p>Centros de mesa, arcos florales y ramos, con flores de temporada seleccionadas para cada estilo.</p>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-top:2px;">
+    <div class="services-grid" style="grid-template-columns:1fr;">
+      <div class="service-card" style="min-height:280px;">
+        <div class="bg"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=1600&auto=format&fit=crop" alt="Sonido e iluminación para eventos"></div>
+        <div class="overlay"></div>
+        <div class="content">
+          <span class="num">05</span>
+          <h3>Sonido e iluminación</h3>
+          <p>Equipos profesionales de sonido, DJ, micrófonos, luces LED y efectos especiales para pista de baile y ceremonia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS DE EVENTO -->
+<section class="section" id="eventos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cada evento, un guion distinto</span>
+      <h2>Elige tu tipo de celebración</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-tab="matrimonio">Matrimonios</button>
+      <button class="tab-btn" data-tab="corporativo">Eventos corporativos</button>
+      <button class="tab-btn" data-tab="xv">15 Años</button>
+      <button class="tab-btn" data-tab="otros">Cumpleaños y otros</button>
+    </div>
+
+    <!-- MATRIMONIO -->
+    <div class="tab-panel active" id="tab-matrimonio">
+      <div class="event-layout">
+        <div class="event-gallery reveal">
+          <div class="tall"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=900&auto=format&fit=crop" alt="Matrimonio en local campestre con carpa"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=900&auto=format&fit=crop" alt="Mesa de matrimonio decorada"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1509927083803-4bd519298ac4?q=80&w=900&auto=format&fit=crop" alt="Brindis de matrimonio"></div>
+        </div>
+        <div class="event-info reveal">
+          <span class="eyebrow">Matrimonios</span>
+          <h3>Tu "sí" merece un escenario a su altura</h3>
+          <p>Locales campestres con carpa en las afueras de Juliaca y Puno, salones techados en la ciudad, decoración temática, arco floral para la ceremonia y pista de baile con sonido profesional.</p>
+          <ul class="event-includes">
+            <li>Local con carpa o salón techado, según preferencia</li>
+            <li>Banquete completo + mesa de dulces</li>
+            <li>Arco floral y centros de mesa</li>
+            <li>Sonido, DJ y luces para la recepción</li>
+          </ul>
+          <div class="event-price">
+            <span class="label">Paquete matrimonio desde</span>
+            <span class="amount">S/ 4,200</span>
+          </div>
+          <a href="#contacto" class="btn solid">Cotizar mi matrimonio</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORPORATIVO -->
+    <div class="tab-panel" id="tab-corporativo">
+      <div class="event-layout">
+        <div class="event-gallery reveal">
+          <div class="tall"><img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=900&auto=format&fit=crop" alt="Evento corporativo en salón"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=900&auto=format&fit=crop" alt="Coffee break corporativo"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=900&auto=format&fit=crop" alt="Conferencia empresarial"></div>
+        </div>
+        <div class="event-info reveal">
+          <span class="eyebrow">Eventos corporativos</span>
+          <h3>Presentaciones, aniversarios y reuniones de empresa</h3>
+          <p>Salones equipados con sonido y proyección, coffee break o almuerzo empresarial, ambientación institucional y atención puntual para directorios, lanzamientos y confraternizaciones.</p>
+          <ul class="event-includes">
+            <li>Salón techado con mobiliario ejecutivo</li>
+            <li>Coffee break, almuerzo o cena de gala</li>
+            <li>Sonido, micrófonos y ecran para presentaciones</li>
+            <li>Ambientación con colores institucionales</li>
+          </ul>
+          <div class="event-price">
+            <span class="label">Paquete corporativo desde</span>
+            <span class="amount">S/ 2,800</span>
+          </div>
+          <a href="#contacto" class="btn solid">Cotizar evento corporativo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- XV -->
+    <div class="tab-panel" id="tab-xv">
+      <div class="event-layout">
+        <div class="event-gallery reveal">
+          <div class="tall"><img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=900&auto=format&fit=crop" alt="Fiesta de 15 años con luces"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop" alt="Pista de baile con luces de colores"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=900&auto=format&fit=crop" alt="Globos y decoración de fiesta"></div>
+        </div>
+        <div class="event-info reveal">
+          <span class="eyebrow">15 Años</span>
+          <h3>Una noche que se cuente por años</h3>
+          <p>Decoración temática a elección, pista con luces LED y efectos, sonido con DJ para el vals y el bailongo, y mesa de bocaditos y dulces para toda la familia.</p>
+          <ul class="event-includes">
+            <li>Decoración temática personalizada</li>
+            <li>Pista con luces LED, máquina de humo y efectos</li>
+            <li>DJ y sonido para vals y fiesta</li>
+            <li>Mesa de bocaditos, torta y dulces</li>
+          </ul>
+          <div class="event-price">
+            <span class="label">Paquete 15 años desde</span>
+            <span class="amount">S/ 2,300</span>
+          </div>
+          <a href="#contacto" class="btn solid">Cotizar mis 15 años</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- OTROS -->
+    <div class="tab-panel" id="tab-otros">
+      <div class="event-layout">
+        <div class="event-gallery reveal">
+          <div class="tall"><img src="https://images.unsplash.com/photo-1533294455009-a77b7557d2d1?q=80&w=900&auto=format&fit=crop" alt="Cumpleaños familiar decorado"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?q=80&w=900&auto=format&fit=crop" alt="Globos coloridos para fiesta"></div>
+          <div class="wide"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=900&auto=format&fit=crop" alt="Mesa de cumpleaños con torta"></div>
+        </div>
+        <div class="event-info reveal">
+          <span class="eyebrow">Cumpleaños, bautizos y aniversarios</span>
+          <h3>Celebraciones familiares con el mismo cuidado</h3>
+          <p>Paquetes flexibles para cumpleaños, bautizos, promociones y aniversarios, con decoración temática, catering para grupos pequeños o grandes y música para toda la reunión.</p>
+          <ul class="event-includes">
+            <li>Decoración a tema (infantil, elegante, temático)</li>
+            <li>Catering desde 20 personas</li>
+            <li>Sonido ambiental o animación con DJ</li>
+            <li>Local propio o a domicilio</li>
+          </ul>
+          <div class="event-price">
+            <span class="label">Paquete familiar desde</span>
+            <span class="amount">S/ 950</span>
+          </div>
+          <a href="#contacto" class="btn solid">Cotizar mi celebración</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PAQUETES -->
+<section class="section packages" id="paquetes">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Planes generales</span>
+      <h2>Paquetes especiales</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <h3>Esencial</h3>
+        <div class="price">S/ 950 <small>desde</small></div>
+        <ul>
+          <li>Catering para 30 personas</li>
+          <li>Bocaditos salados y dulces</li>
+          <li>Mesa principal decorada</li>
+          <li>Menaje básico incluido</li>
+          <li>Atención personalizada</li>
+        </ul>
+        <a href="#contacto" class="btn">Consultar</a>
+      </div>
+      <div class="pkg-card featured reveal">
+        <span class="tag">Más elegido</span>
+        <h3>Imperial</h3>
+        <div class="price">S/ 2,300 <small>desde</small></div>
+        <ul>
+          <li>Catering para 60 personas</li>
+          <li>Decoración floral incluida</li>
+          <li>Sonido y luces LED</li>
+          <li>Mozos y anfitriona</li>
+          <li>Mesa principal y pista decorada</li>
+        </ul>
+        <a href="#contacto" class="btn">Consultar</a>
+      </div>
+      <div class="pkg-card reveal">
+        <h3>Gran Gala</h3>
+        <div class="price">S/ 4,200 <small>desde</small></div>
+        <ul>
+          <li>Catering completo sin límite base</li>
+          <li>Local con carpa o salón incluido</li>
+          <li>Decoración temática integral</li>
+          <li>DJ, sonido y luces profesionales</li>
+          <li>Coordinación total del evento</li>
+        </ul>
+        <a href="#contacto" class="btn">Consultar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIADOS -->
+<section class="section allies" id="aliados">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Red de proveedores</span>
+      <h2>Trabajamos con locales y equipos técnicos de la zona</h2>
+      <div class="rule"></div>
+    </div>
+    <p class="allies-note">Coordinamos con locales campestres, salones y equipos de sonido de Puno y Juliaca según disponibilidad y presupuesto. Al cotizar, te confirmamos las opciones vigentes con fotos reales del local o equipo asignado a tu fecha.</p>
+    <div class="allies-grid">
+      <div class="ally-card reveal">
+        <div class="ally-img"><img src="https://images.unsplash.com/photo-1478146059778-26028b07395a?q=80&w=800&auto=format&fit=crop" alt="Local campestre con carpa en Puno"></div>
+        <div class="ally-body">
+          <span class="cat">Local · Carpa campestre</span>
+          <h4>Locales con carpa, alrededores de Juliaca</h4>
+          <p>Amplios patios techados con carpa blanca, ideales para matrimonios y XV años de más de 150 invitados.</p>
+        </div>
+      </div>
+      <div class="ally-card reveal">
+        <div class="ally-img"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=800&auto=format&fit=crop" alt="Salón techado para eventos en Puno"></div>
+        <div class="ally-body">
+          <span class="cat">Local · Salón techado</span>
+          <h4>Salones techados en la ciudad de Puno</h4>
+          <p>Espacios cerrados con climatización, ideales para eventos corporativos y celebraciones en temporada de lluvia.</p>
+        </div>
+      </div>
+      <div class="ally-card reveal">
+        <div class="ally-img"><img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?q=80&w=800&auto=format&fit=crop" alt="Equipo de sonido y luces para eventos"></div>
+        <div class="ally-body">
+          <span class="cat">Sonido e iluminación</span>
+          <h4>Equipos de sonido profesional y luces LED</h4>
+          <p>Consolas, parlantes de alta potencia, pantallas de luces y DJ en vivo para pista de baile y ceremonias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="section gallery" id="galeria">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Momentos reales</span>
+      <h2>Galería de eventos</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="masonry reveal">
+      <figure><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=700&auto=format&fit=crop" alt="Brindis de celebración"><figcaption>Brindis entre invitados</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=700&auto=format&fit=crop" alt="Mesa larga decorada con flores"><figcaption>Mesa principal, matrimonio en carpa</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=700&auto=format&fit=crop" alt="Pista de baile con luces"><figcaption>Pista con luces LED</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1533294455009-a77b7557d2d1?q=80&w=700&auto=format&fit=crop" alt="Familia celebrando cumpleaños"><figcaption>Cumpleaños familiar</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=700&auto=format&fit=crop" alt="Detalle de mesa decorada"><figcaption>Detalle de centro de mesa</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=700&auto=format&fit=crop" alt="Globos de colores para fiesta"><figcaption>Ambientación 15 años</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="section testi">
+  <div class="container">
+    <blockquote>
+      "Coordinaron el local, la comida y la decoración de mi matrimonio sin que tengamos que llamar a cinco proveedores distintos. Todo llegó a tiempo y quedó tal cual lo conversamos."
+      <cite>— Novia, matrimonio en Juliaca</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contact" id="contacto">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reserva tu fecha</span>
+      <h2>Contáctanos</h2>
+      <p>Cuéntanos tu fecha, número de invitados y tipo de evento. Te respondemos con una propuesta en menos de 24 horas.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Información de contacto</h3>
+        <div class="row"><b>WhatsApp / Ventas</b>+51 983 155 549 · +51 917 841 871</div>
+        <div class="row"><b>Correo</b>contacto@latelierimperial.pe</div>
+        <div class="row"><b>Cobertura</b>Puno, Juliaca y alrededores del Altiplano</div>
+        <div class="row"><b>Horario</b>Lunes a domingo, 8:00 a.m. – 10:00 p.m.</div>
+        <div class="wa-buttons">
+          <a class="wa-btn" target="_blank" href="https://wa.me/51983155549?text=Hola%20L%27Atelier%20Imperial%2C%20quisiera%20cotizar%20un%20evento">
+            <svg viewBox="0 0 24 24" fill="#0b3d20"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+            Escribir al 983 155 549
+          </a>
+          <a class="wa-btn" target="_blank" href="https://wa.me/51917841871?text=Hola%20L%27Atelier%20Imperial%2C%20quisiera%20cotizar%20un%20evento">
+            <svg viewBox="0 0 24 24" fill="#0b3d20"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+            Escribir al 917 841 871
+          </a>
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="quoteForm">
+        <div class="field">
+          <label>Nombre completo</label>
+          <input type="text" id="f_name" placeholder="Tu nombre completo" required>
+        </div>
+        <div class="field">
+          <label>Número de celular</label>
+          <input type="tel" id="f_phone" placeholder="Tu número de celular" required>
+        </div>
+        <div class="field">
+          <label>Tipo de evento</label>
+          <select id="f_type">
+            <option>Matrimonio</option>
+            <option>Evento corporativo</option>
+            <option>15 años</option>
+            <option>Cumpleaños</option>
+            <option>Bautizo / Aniversario</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cantidad aproximada de invitados</label>
+          <input type="number" id="f_guests" placeholder="Ej. 100">
+        </div>
+        <div class="field">
+          <label>Cuéntanos qué necesitas</label>
+          <textarea rows="4" id="f_msg" placeholder="Local, comida, flores, sonido, decoración, fecha tentativa, etc."></textarea>
+        </div>
+        <button type="submit" class="btn solid">Enviar consulta por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">L'ATELIER <span>Imperial</span></div>
+    <p>Eventos y catering integral para Puno y Juliaca.</p>
+    <p style="margin-top:10px;">WhatsApp: <a href="https://wa.me/51983155549">983 155 549</a> · <a href="https://wa.me/51917841871">917 841 871</a></p>
+    <p style="margin-top:16px; opacity:.7;">© 2026 L'Atelier Imperial. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="fab">
+  <div class="fab-menu" id="fabMenu">
+    <div class="head">Escríbenos por WhatsApp</div>
+    <a target="_blank" href="https://wa.me/51983155549?text=Hola%20L%27Atelier%20Imperial%2C%20quisiera%20cotizar%20un%20evento">📱 983 155 549</a>
+    <a target="_blank" href="https://wa.me/51917841871?text=Hola%20L%27Atelier%20Imperial%2C%20quisiera%20cotizar%20un%20evento">📱 917 841 871</a>
+  </div>
+  <button class="fab-btn" id="fabBtn" aria-label="Abrir WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.5-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C3.9 14.7 3.5 13.4 3.5 12c0-4.7 3.8-8.5 8.5-8.5s8.5 3.8 8.5 8.5-3.8 8.5-8.5 8.5z"/></svg>
+  </button>
+</div>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Event type tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Floating WhatsApp menu
+  const fabBtn = document.getElementById('fabBtn');
+  const fabMenu = document.getElementById('fabMenu');
+  fabBtn.addEventListener('click', () => fabMenu.classList.toggle('open'));
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.fab')) fabMenu.classList.remove('open');
+  });
+
+  // Quote form -> builds WhatsApp message
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('f_name').value || 'Sin nombre';
+    const phone = document.getElementById('f_phone').value || '';
+    const type = document.getElementById('f_type').value;
+    const guests = document.getElementById('f_guests').value || 'no especificado';
+    const msg = document.getElementById('f_msg').value || '';
+    const text = `Hola L'Atelier Imperial, soy ${name} (cel: ${phone}). Quisiera cotizar un evento de tipo "${type}" para aprox. ${guests} invitados. Detalles: ${msg}`;
+    window.open('https://wa.me/51983155549?text=' + encodeURIComponent(text), '_blank');
+  });
+</script>
+
+</body>
+</html>
